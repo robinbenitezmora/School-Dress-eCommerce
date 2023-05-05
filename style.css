@@ -31,6 +31,20 @@ body {
  margin: 0 auto;
 }
 
+section {
+ padding: 4rem 0;
+}
+
+.section-title {
+ font-size: 2rem;
+ font-weight: 600;
+ text-align: center;
+}
+
+.shop {
+ margin-top: 2rem;
+}
+
 header {
  position: fixed;
  top: 0;
