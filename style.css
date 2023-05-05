@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;1,700&display=swap');
+
+* {
+ margin: 0;
+ padding: 0;
+ box-sizing: border-box;
+ font-family: 'Poppins', sans-serif;
+ scroll-padding-top: 2rem;
+ scrollbar-color: smooth;
+ list-style: none;
+ text-decoration: none;
+}
+
+:root {
+ --main-color: #fd4646;
+ --text-color: #171427;
+ --bg-color: #fff;
+}
+
+img {
+ width: 100%;
+}
