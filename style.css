@@ -6,7 +6,7 @@
  box-sizing: border-box;
  font-family: 'Poppins', sans-serif;
  scroll-padding-top: 2rem;
- scrollbar-color: smooth;
+ scroll-behavior: smooth;
  list-style: none;
  text-decoration: none;
 }
@@ -19,4 +19,42 @@
 
 img {
  width: 100%;
+}
+
+body {
+ color: var(--text-color);
+}
+
+.container {
+ width: 100%;
+ max-width: 1200px;
+ margin: 0 auto;
+}
+
+header {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ background: var(--bg-color);
+ box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.nav {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 1rem 2rem;
+}
+
+.logo {
+ font-size: 1.4rem;
+ font-weight: 500;
+ color: var(--text-color);
+}
+
+#cart-icon {
+ font-size: 1.6rem;
+ cursor: pointer;
+ color: var(--text-color);
 }
