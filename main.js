@@ -7,11 +7,7 @@ cartIcon.onclick = () => {
 }
 
 closeCart.onclick = () => {
- cart.classList.add('active');
-}
-
-cart.onclick = () => {
- cart.classList.add('active');
+ cart.classList.remove('active');
 }
 
 if (document.readyState == 'loading'){
@@ -42,9 +38,21 @@ function ready() {
   var button = addCart[i];
   button.addEventListener("click", addCartClicked);
  }
+ // Buy Button Work
+ document.getElementsByClassName('btn-buy')[0].addEventListener('click', buyButtonClicked);
 }
 
-// Remoe Items From Cart
+// Buy Button
+function buyButtonClicked(event) {
+ alert('Your Order is placed');
+ var cartContent = document.getElementsByClassName('cart-content')[0];
+ while (cartContent.hasChildNodes()) {
+  cartContent.removeChild(cartContent.firstChild);
+ }
+ updateTotal();
+}
+
+// Remove Items From Cart
 function removeCartItem(event){
  var buttonClicked = event.target;
  buttonClicked.parentElement.remove();
@@ -64,8 +72,35 @@ function addCartClicked(event) {
  var button = event.target;
  var shopProducts = button.parentElement;
  var title = shopProducts.getElementsByClassName('product-title')[0].innerText;
- console.log(title);
+ var price = shopProducts.getElementsByClassName('price')[0].innerText;
+ var productImg = shopProducts.getElementsByClassName('product-img')[0].src;
+ addProductToCart(title, price, productImg);
+ updateTotal();
 }
+
+function addProductToCart(title, price, productImg) {
+ var cartShopBox = document.createElement('div');
+ cartShopBox.classList.add('cart-box');
+ var cartItems = document.getElementsByClassName('cart-content');
+ var cartItemsNames = cartItems.getElementsByClassName('cart-product-title');
+ for (let i = 0; i < cartItemsNames.length; i++) {
+  alert('You have already add this item to cart');
+  return;
+ }
+}
+var cartBoxContent = `
+                       <img src="${productImg}" class="cart-img" alt="">
+                       <div class="detail-box">
+                        <div class="cart-product-title">${title}</div>
+                        <div class="cart-price">${price}</div>
+                        <input type="number" class="cart-quantity" value="1">
+                       </div>
+                       <!-- Remove Cart -->
+                       <i class='bx bxs-trash-alt cart-remove'></i>`
+cartShopBox.innerHTML = cartBoxContent;
+cartItems.append(cartShopBox);
+cartShopBox.getElementsByClassName('cart-remove')[0].addEventListener('click', removeCartItem);
+cartShopBox.getElementsByClassName('cart-quantity')[0].addEventListener('change', quantityChanged);
 
 // Update Total
 function updateTotal() {
