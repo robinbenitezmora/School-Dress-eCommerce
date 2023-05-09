@@ -36,6 +36,12 @@ function ready() {
   var input = quantityInputs[i];
   input.addEventListener("change", quantityChanged);
  }
+ // Add to Cart
+ var addCart = document.getElementsByClassName('add-cart');
+ for (let i = 0; i < addCart.length; i++) {
+  var button = addCart[i];
+  button.addEventListener("click", addCartClicked);
+ }
 }
 
 // Remoe Items From Cart
@@ -51,6 +57,14 @@ function quantityChanged(event) {
   input.value = 1;
  }
  updateTotal();
+}
+
+// Add to cart
+function addCartClicked(event) {
+ var button = event.target;
+ var shopProducts = button.parentElement;
+ var title = shopProducts.getElementsByClassName('product-title')[0].innerText;
+ console.log(title);
 }
 
 // Update Total
