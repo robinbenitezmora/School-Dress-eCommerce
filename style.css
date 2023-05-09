@@ -128,12 +128,17 @@ header {
 .cart {
  position: fixed;
  top: 0;
- right: 0;
+ right: -100%;
  width: 23rem;
  min-height: 100vh;
  background: var(--bg-color);
  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
  padding: 2rem;
+ transition: 0.3s;
+}
+
+.cart.active {
+ right: 0;
 }
 
 .cart-title {
