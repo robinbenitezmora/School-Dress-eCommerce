@@ -4,44 +4,44 @@ let closeCart = document.querySelector('#close-cart')
 
 cartIcon.onclick = () => {
  cart.classList.add('active');
-}
+};
 
 closeCart.onclick = () => {
  cart.classList.remove('active');
-}
+};
 
 if (document.readyState == 'loading'){
- document.addEventListener('DOMContentLoaded', ready)
-} else {
+ document.addEventListener('DOMContentLoaded', ready);
  ready();
 }
 
 // Making Function
 function ready() {
  // Remove Items From Cart
- var removeCartButtons = document.getElementsByClassName('cart-remove')
- console.log(removeCartButtons)
+ var removeCartButtons = document.getElementsByClassName('cart-remove');
+ console.log(removeCartButtons);
  
  for (let i = 0; i < removeCartButtons.length; i++) {
   var button = removeCartButtons[i]
   button.addEventListener('click', removeCartItem)
  }
- // Quantity Changes
- var quantityInputs = document.getElementsByClassName('cart-quantity');
- for (let i = 0; i < quantityInputs.length; i++) {
-  var input = quantityInputs[i];
-  input.addEventListener("change", quantityChanged);
- }
- // Add to Cart
+  // Quantity Changes
+  var quantityInputs = document.getElementsByClassName('cart-quantity');
+  for (let i = 0; i < quantityInputs.length; i++) {
+   var input = quantityInputs[i];
+   input.addEventListener('change', quantityChanged);
+  }
+   // Add to Cart
  var addCart = document.getElementsByClassName('add-cart');
  for (let i = 0; i < addCart.length; i++) {
   var button = addCart[i];
-  button.addEventListener("click", addCartClicked);
+  button.addEventListener('click', addCartClicked);
  }
+
  // Buy Button Work
  document.getElementsByClassName('btn-buy')[0].addEventListener('click', buyButtonClicked);
 }
-
+ 
 // Buy Button
 function buyButtonClicked(event) {
  alert('Your Order is placed');
@@ -49,24 +49,7 @@ function buyButtonClicked(event) {
  while (cartContent.hasChildNodes()) {
   cartContent.removeChild(cartContent.firstChild);
  }
- var quantityInputs = document.getElementsByClassName('cart-quantity');
- for (let i = 0; i < quantityInputs.length; i++) {
-  var input = quantityInputs[i];
-  input.addEventListener("change", quantityChanged);
- }
- // Add to Cart
- var addCart = document.getElementsByClassName('add-cart')
- for (let i = 0; i < addCart.length; i++) {
-  var button = addCart[i];
-  button.addEventListener('click', addCartClicked);
- }
- // Buy Button Work
- document.getElementsByClassName('btn-buy')[0].addEventListener('click', buyButtonClicked);
-}
-
-// Buy Button
-function buyButtonClicked() {
- alert("Your order is placed")
+ updateTotal();
 }
 
 // Remove Items From Cart
@@ -75,6 +58,7 @@ function removeCartItem(event){
  buttonClicked.parentElement.remove();
  updateTotal();
 }
+
 // Quantity Changes
 function quantityChanged(event) {
  var input = event.target
@@ -98,13 +82,14 @@ function addCartClicked(event) {
 function addProductToCart(title, price, productImg) {
  var cartShopBox = document.createElement('div');
  cartShopBox.classList.add('cart-box');
- var cartItems = document.getElementsByClassName('cart-content');
+ var cartItems = document.getElementsByClassName('cart-content')[0];
  var cartItemsNames = cartItems.getElementsByClassName('cart-product-title');
  for (let i = 0; i < cartItemsNames.length; i++) {
   alert('You have already add this item to cart');
   return;
  }
 }
+
 var cartBoxContent = `
                        <img src="${productImg}" class="cart-img" alt="">
                        <div class="detail-box">
@@ -119,6 +104,7 @@ cartItems.append(cartShopBox);
 cartShopBox.getElementsByClassName('cart-remove')[0].addEventListener('click', removeCartItem);
 cartShopBox.getElementsByClassName('cart-quantity')[0].addEventListener('change', quantityChanged);
 
+
 // Update Total
 function updateTotal() {
  var cartContent = document.getElementsByClassName('cart-content')[0];
@@ -131,8 +117,8 @@ function updateTotal() {
   var price = parseFloat(priceElement.innerText.replace("$", ""));
   var quantity = quantityElement.value;
   total = total + (price * quantity);
+ }
   // If price Contain some Cents Value
   total = Math.round(total * 100 ) / 100;
   document.getElementsByClassName('total-price')[0].innerText = '$' + total;
- }
 }
