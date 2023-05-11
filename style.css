@@ -238,3 +238,35 @@ header {
  cursor: pointer;
  color: var(--text-color);
 }
+
+@media screen and (max-width: 1080px) {
+ .nav {
+  padding: 1rem;
+ }
+
+ section {
+  padding: 3rem 0 2rem;
+ }
+
+ .container {
+  max-width: 90%;
+ }
+
+ .shop-content {
+  grid-template-columns: repeat(auto-fit, minmax(20rem, auto));
+ }
+}
+
+@media screen and (max-width: 400px) {
+ .nav {
+  padding: 1rem 0.5rem;
+ }
+
+ .logo {
+  font-size: 1.2rem;
+ }
+
+ .cart {
+  width: 100%;
+ }
+}
