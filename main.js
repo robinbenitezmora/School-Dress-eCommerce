@@ -84,13 +84,7 @@ function addProductToCart(title, price, productImg) {
  cartShopBox.classList.add('cart-box');
  var cartItems = document.getElementsByClassName('cart-content')[0];
  var cartItemsNames = cartItems.getElementsByClassName('cart-product-title');
- for (let i = 0; i < cartItemsNames.length; i++) {
-  alert('You have already add this item to cart');
-  return;
- }
-}
-
-var cartBoxContent = `
+ var cartBoxContent = `
                        <img src="${productImg}" class="cart-img" alt="">
                        <div class="detail-box">
                         <div class="cart-product-title">${title}</div>
@@ -103,7 +97,11 @@ cartShopBox.innerHTML = cartBoxContent;
 cartItems.append(cartShopBox);
 cartShopBox.getElementsByClassName('cart-remove')[0].addEventListener('click', removeCartItem);
 cartShopBox.getElementsByClassName('cart-quantity')[0].addEventListener('change', quantityChanged);
-
+ for (let i = 0; i < cartItemsNames.length; i++) {
+  alert('If you want add units of any product you can use the side bar too');
+  return;
+ }
+}
 
 // Update Total
 function updateTotal() {
