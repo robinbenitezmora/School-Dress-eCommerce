@@ -49,7 +49,24 @@ function buyButtonClicked(event) {
  while (cartContent.hasChildNodes()) {
   cartContent.removeChild(cartContent.firstChild);
  }
- updateTotal();
+ var quantityInputs = document.getElementsByClassName('cart-quantity');
+ for (let i = 0; i < quantityInputs.length; i++) {
+  var input = quantityInputs[i];
+  input.addEventListener("change", quantityChanged);
+ }
+ // Add to Cart
+ var addCart = document.getElementsByClassName('add-cart')
+ for (let i = 0; i < addCart.length; i++) {
+  var button = addCart[i];
+  button.addEventListener('click', addCartClicked);
+ }
+ // Buy Button Work
+ document.getElementsByClassName('btn-buy')[0].addEventListener('click', buyButtonClicked);
+}
+
+// Buy Button
+function buyButtonClicked() {
+ alert("Your order is placed")
 }
 
 // Remove Items From Cart
@@ -96,7 +113,7 @@ var cartBoxContent = `
                         <input type="number" class="cart-quantity" value="1">
                        </div>
                        <!-- Remove Cart -->
-                       <i class='bx bxs-trash-alt cart-remove'></i>`
+                       <i class='bx bxs-trash-alt cart-remove'></i>`;
 cartShopBox.innerHTML = cartBoxContent;
 cartItems.append(cartShopBox);
 cartShopBox.getElementsByClassName('cart-remove')[0].addEventListener('click', removeCartItem);
@@ -113,7 +130,7 @@ function updateTotal() {
   var quantityElement = cartBox.getElementsByClassName('cart-quantity')[0];
   var price = parseFloat(priceElement.innerText.replace("$", ""));
   var quantity = quantityElement.value;
-  total += (price * quantity);
+  total = total + (price * quantity);
   // If price Contain some Cents Value
   total = Math.round(total * 100 ) / 100;
   document.getElementsByClassName('total-price')[0].innerText = '$' + total;

@@ -35,6 +35,34 @@ section {
  padding: 4rem 0 3rem;
 }
 
+header {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 100%;
+ background: var(--bg-color);
+ box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+ z-index: 999;
+}
+
+.nav {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ padding: 1rem 0;
+}
+
+.logo {
+ font-size: 1.4rem;
+ font-weight: 500;
+ color: var(--text-color);
+}
+
+#cart-icon {
+ font-size: 1.8rem;
+ cursor: pointer;
+}
+
 .section-title {
  font-size: 2rem;
  font-weight: 600;
@@ -97,47 +125,16 @@ section {
  color: var(--bg-color);
 }
 
-header {
- position: fixed;
- top: 0;
- left: 0;
- width: 100%;
- background: var(--bg-color);
- box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-.nav {
- display: flex;
- justify-content: space-between;
- align-items: center;
- padding: 1rem 2rem;
-}
-
-.logo {
- font-size: 1.4rem;
- font-weight: 500;
- color: var(--text-color);
-}
-
-#cart-icon {
- font-size: 1.6rem;
- cursor: pointer;
-}
-
 .cart {
  position: fixed;
  top: 0;
  right: -100%;
- width: 23rem;
+ width: 22rem;
  min-height: 100vh;
  background: var(--bg-color);
  box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
  padding: 2rem;
  transition: 0.3s;
- -webkit-transition: 0.3s;
- -moz-transition: 0.3s;
- -ms-transition: 0.3s;
- -o-transition: 0.3s;
 }
 
 .cart.active {
@@ -148,7 +145,7 @@ header {
  font-size: 1.6rem;
  font-weight: 600;
  text-align: center;
- margin-bottom: 2rem;
+ margin-top: 2rem;
 }
 
 .cart-box {
@@ -237,7 +234,7 @@ header {
  position: absolute;
  top: 1rem;
  right: 1rem;
- font-size: 1.6rem;
+ font-size: 2.5rem;
  cursor: pointer;
  color: var(--text-color);
 }
