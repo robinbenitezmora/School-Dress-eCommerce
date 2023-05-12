@@ -10,6 +10,11 @@ This is a project to create an e-commerce website. The main goal is to build a r
 - Visual Studio Code.
 - JavaScript.
 - GitHub
+- Git
+
+## 💻 Live demo
+- [Live Demo Link](https://strong-jelly-2ca995.netlify.app/)
+
 
 
 ### Install
